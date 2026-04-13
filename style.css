@@ -1,0 +1,457 @@
+:root {
+  --primary-color: #2f6f5e;
+  --secondary-color: #3e8e7e;
+  --accent-color: #4caf50;
+  --text-dark: #333;
+  --bg-color: #f4f7f6;
+  --white: #ffffff;
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 15px rgba(47, 111, 94, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+nav a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 20px 30px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--white);
+  transition: width 0.3s ease;
+  box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.3);
+}
+
+nav a:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+main {
+  flex: 1;
+  padding: 30px 20px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.page-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: var(--white);
+  padding: 50px 40px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(47, 111, 94, 0.25);
+}
+
+.hero h2 {
+  color: var(--white);
+  border: none;
+  padding-bottom: 0;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.hero-content p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 35px 30px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-top: 4px solid var(--primary-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(47, 111, 94, 0.15);
+}
+
+.card-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.card-link:hover {
+  color: var(--secondary-color);
+  background-color: rgba(47, 111, 94, 0.08);
+  transform: translateX(4px);
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 500;
+}
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: #f9fbfb;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--secondary-color);
+  background-color: white;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(62, 142, 126, 0.15);
+  transform: translateY(-2px);
+}
+
+.button {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(47, 111, 94, 0.2);
+  display: inline-block;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(47, 111, 94, 0.3);
+  filter: brightness(1.1);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(47, 111, 94, 0.2);
+}
+
+.contact-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+  background: linear-gradient(135deg, #e0f2f1, #ffffff);
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 5px solid var(--primary-color);
+}
+
+.contact-form {
+  flex: 2;
+  min-width: 300px;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  nav.show {
+    display: flex;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  nav a {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    background-color: var(--secondary-color);
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  nav a {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+}
